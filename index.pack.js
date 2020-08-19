@@ -77,7 +77,7 @@ var grid = document.querySelector('.grid');
 var startButton = document.getElementById('start');
 var score = document.getElementById('score');
 var squares = [];
-var currentSnake = [0, 1, 2];
+var currentSnake = [2, 1, 0];
 
 function createGrid() {
   // create 100 of these elements with a for loop
@@ -98,6 +98,20 @@ createGrid();
 currentSnake.forEach(function (index) {
   return squares[index].classList.add('snake');
 });
+
+function move() {
+  // remove last element from our currentSnake array
+  var tail = currentSnake.pop();
+  console.log(tail);
+  console.log(currentSnake);
+  // remove styling from last element
+  squares[tail].classList.remove('snake');
+  // add square in direction we are heading
+
+  // add styling so we can see it
+}
+
+move();
 
 /***/ })
 /******/ ]);
