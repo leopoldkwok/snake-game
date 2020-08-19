@@ -71,8 +71,31 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-// javascript
 
+
+var grid = document.querySelector('.grid');
+var startButton = document.getElementById('start');
+var score = document.getElementById('score');
+var squares = [];
+
+function createGrid() {
+  // create 100 of these elements with a for loop
+  for (var i = 0; i < 100; i++) {
+    // create element
+    var square = document.createElement('div');
+    console.log(square);
+
+    // add styling to these element
+    square.classList.add('square');
+    // put the element into our grid
+    grid.appendChild(square);
+    // push it into a new square array
+    squares.push(square);
+  }
+  console.log(squares);
+}
+
+createGrid();
 
 /***/ })
 /******/ ]);
