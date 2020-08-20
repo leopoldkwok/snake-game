@@ -125,12 +125,13 @@ function control(e) {
     console.log('right pressed');
   } else if (e.keyCode === 38) {
     console.log('up pressed');
-  } else if (e.keyCode = 37) {
+  } else if (e.keyCode === 37) {
     console.log('left pressed');
   } else if (e.keyCode === 40) {
     console.log('down pressed');
   }
 }
+// document.addEventListener('keyup', control);
 
 /***/ })
 /******/ ]);
