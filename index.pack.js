@@ -113,5 +113,7 @@ function move() {
 
 move();
 
+var timerId = setInterval(move, 1000);
+
 /***/ })
 /******/ ]);
