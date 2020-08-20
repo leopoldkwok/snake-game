@@ -59,4 +59,4 @@ function control(e) {
     direction = +width;
   }
 }
-document.addEventListener('keyup', control);
+document.addEventListener('keydown', control);
