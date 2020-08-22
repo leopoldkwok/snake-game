@@ -1,11 +1,12 @@
 const grid = document.querySelector('.grid');
 const startButton = document.getElementById('start');
-const score = document.getElementById('score');
+const scoreDisplay = document.getElementById('score');
 let squares = [];
 let currentSnake = [2, 1, 0];
 let direction = 1;
 const width = 10;
 let appleIndex = 0;
+let score = 0;
 
 function createGrid() {
   // create 100 of these elements with a for loop
@@ -41,7 +42,6 @@ function move() {
   squares[tail].classList.remove('snake');
   // add square in direction we are heading
   currentSnake.unshift(currentSnake[0] + direction);
-  // add styling so we can see it
 
   // deal with snake head getting the apple
   if (squares[currentSnake[0]].classList.contains('apple')) {
@@ -56,9 +56,12 @@ function move() {
     // generate a new apple
     generateApple();
     // add one to the score
+    score++;
+    // display our score
+    scoreDisplay.textContent(score);
     // speed up our snake
   }
-
+  // add styling so we can see it
   squares[currentSnake[0]].classList.add('snake');
 }
 
