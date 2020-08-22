@@ -132,7 +132,7 @@ function move() {
     // add one to the score
     score++;
     // display our score
-    scoreDisplay.textContent(score);
+    scoreDisplay.textContent = score;
     // speed up our snake
   }
   // add styling so we can see it
@@ -143,7 +143,7 @@ move();
 
 var timerId = setInterval(move, 1000);
 
-function generateApples() {
+function generateApple() {
   do {
     // generate a random number
     appleIndex = Math.floor(Math.random() * squares.length);
@@ -151,7 +151,7 @@ function generateApples() {
   squares[appleIndex].classList.add('apple');
 }
 
-generateApples();
+generateApple();
 
 // 39 is right arrow
 // 38 is for the up arrow
