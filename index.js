@@ -42,6 +42,26 @@ function move() {
   // add square in direction we are heading
   currentSnake.unshift(currentSnake[0] + direction);
   // add styling so we can see it
+  
+  // deal with snake head getting the apple
+  if () { 
+    //remove the class of apple
+
+    // grow our snake by adding class of snake to it
+
+    // grow our snake array
+
+    // generate a new apple
+
+    // add one to the score
+
+    // speed up our snake
+  
+  }
+
+
+
+
   squares[currentSnake[0]].classList.add('snake');
 }
 
