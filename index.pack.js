@@ -80,6 +80,7 @@ var squares = [];
 var currentSnake = [2, 1, 0];
 var direction = 1;
 var width = 10;
+var appleIndex = 0;
 
 function createGrid() {
   // create 100 of these elements with a for loop
@@ -121,6 +122,16 @@ function move() {
 move();
 
 var timerId = setInterval(move, 1000);
+
+function generateApples() {
+  do {
+    // generate a random number
+    appleIndex = Math.floor(Math.random() * squares.length);
+  } while (squares[appleIndex].classList.contains('snake'));
+  squares[appleIndex].classList.add('apple');
+}
+
+generateApples();
 
 // 39 is right arrow
 // 38 is for the up arrow
