@@ -68,9 +68,104 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-throw new Error("Module build failed: SyntaxError: Unexpected token (47:6)\n\n\u001b[0m \u001b[90m 45 | \u001b[39m  \n \u001b[90m 46 | \u001b[39m  \u001b[90m// deal with snake head getting the apple\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 47 | \u001b[39m  \u001b[36mif\u001b[39m () { \n \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 48 | \u001b[39m    \u001b[90m//remove the class of apple\u001b[39m\n \u001b[90m 49 | \u001b[39m\n \u001b[90m 50 | \u001b[39m    \u001b[90m// grow our snake by adding class of snake to it\u001b[39m\u001b[0m\n");
+"use strict";
+
+
+var grid = document.querySelector('.grid');
+var startButton = document.getElementById('start');
+var score = document.getElementById('score');
+var squares = [];
+var currentSnake = [2, 1, 0];
+var direction = 1;
+var width = 10;
+var appleIndex = 0;
+
+function createGrid() {
+  // create 100 of these elements with a for loop
+  for (var i = 0; i < width * width; i++) {
+    // create element
+    var square = document.createElement('div');
+    // add styling to these element
+    square.classList.add('square');
+    // put the element into our grid
+    grid.appendChild(square);
+    // push it into a new square array
+    squares.push(square);
+  }
+}
+
+createGrid();
+
+currentSnake.forEach(function (index) {
+  return squares[index].classList.add('snake');
+});
+
+function move() {
+  if (currentSnake[0] + width >= width * width && direction === width || //if snake has hit bottom
+  currentSnake[0] % width === width - 1 && direction === 1 || // if snake has hit right wall
+  currentSnake[0] % width === 0 && direction === -1 || // if snake has hit left wall
+  currentSnake[0] - width < 0 && direction === -width || // if snake has hit top
+  squares[currentSnake[0] + direction].classList.contains('snake')) return clearInterval(timerId);
+
+  // remove last element from our currentSnake array
+  var tail = currentSnake.pop();
+  // remove styling from last element
+  squares[tail].classList.remove('snake');
+  // add square in direction we are heading
+  currentSnake.unshift(currentSnake[0] + direction);
+  // add styling so we can see it
+
+  // deal with snake head getting the apple
+  if (squares[currentSnake[0]].classList.contains('apple')) {
+    //remove the class of apple
+    squares[currentSnake[0]].classList.remove('apple');
+    // grow our snake by adding class of snake to it
+    // grow our snake array
+    // generate a new apple
+    // add one to the score
+    // speed up our snake
+  }
+
+  squares[currentSnake[0]].classList.add('snake');
+}
+
+move();
+
+var timerId = setInterval(move, 1000);
+
+function generateApples() {
+  do {
+    // generate a random number
+    appleIndex = Math.floor(Math.random() * squares.length);
+  } while (squares[appleIndex].classList.contains('snake'));
+  squares[appleIndex].classList.add('apple');
+}
+
+generateApples();
+
+// 39 is right arrow
+// 38 is for the up arrow
+// 37 is for the left arrow
+// 40 is for the down arrow
+
+function control(e) {
+  if (e.keyCode === 39) {
+    console.log('right pressed');
+    direction = 1;
+  } else if (e.keyCode === 38) {
+    console.log('up pressed');
+    direction = -width;
+  } else if (e.keyCode === 37) {
+    console.log('left pressed');
+    direction = -1;
+  } else if (e.keyCode === 40) {
+    console.log('down pressed');
+    direction = +width;
+  }
+}
+document.addEventListener('keydown', control);
 
 /***/ })
 /******/ ]);
