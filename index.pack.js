@@ -122,8 +122,13 @@ function move() {
     //remove the class of apple
     squares[currentSnake[0]].classList.remove('apple');
     // grow our snake by adding class of snake to it
+    squares[tail].classList.add('snake');
+    console.log(tail);
     // grow our snake array
+    currentSnake.push(tail);
+    console.log(currentSnake);
     // generate a new apple
+    generateApple();
     // add one to the score
     // speed up our snake
   }
