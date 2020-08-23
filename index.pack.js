@@ -107,18 +107,23 @@ currentSnake.forEach(function (index) {
 
 function startGame() {
   // remove the snake
-
+  currentSnake.forEach(function (index) {
+    return squares[index].classList.remove('snake');
+  });
   // remove the apple
-
+  squares[appleIndex].classList.remove('apple');
   clearInterval(timerId);
   currentSnake = [2, 1, 0];
-  // re add the new score to the browser
   score = 0;
+  // re add the new score to the browser
+  scoreDisplay.textContent = score;
   direction = 1;
   intervalTime = 1000;
   generateApple();
   // readd the class of snake to our new currentSnake
-
+  currentSnake.forEach(function (index) {
+    return squares[index].classList.add('snake');
+  });
   timerId = setInterval(move, intervalTime);
 }
 
